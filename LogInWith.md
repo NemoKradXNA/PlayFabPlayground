@@ -317,3 +317,5 @@ and the LogIn method looks like this:
 ````
 
 Now, this is my first stab at this, so I am guessing some of you might well be jumping up and down shouting "NO!! NO! DONT DO IT LIKE THAT!", if that is the case, then let me know :D
+
+[<- Prev](/index.md)
