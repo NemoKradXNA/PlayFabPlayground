@@ -58,3 +58,8 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+/MonoGamePlayFab/bin/Debug/netcoreapp3.1
+/MonoGamePlayFab/Content/obj/DesktopGL/Content
+/MonoGamePlayFab/obj
+/PlayFabMonoGame/bin/Debug/netstandard2.0
+/PlayFabMonoGame/obj
