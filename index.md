@@ -25,3 +25,5 @@ As you can see I have created a game called Shooter already, but to create anoth
 Once set up you will see you get an ID on your game's tile on your dashboard, in the first image, you can see I have deleted mine. You will need this when you start to talk to the PlayFab API.
 
 This first project is going to be a super simple shootem up, very basic, for me to get into the PlayFab API and see what I can do with it. Ill be posting my progress as I go here, using this repo as a bit of a blog :)
+
+[Next ->](/LogInWith.md)
