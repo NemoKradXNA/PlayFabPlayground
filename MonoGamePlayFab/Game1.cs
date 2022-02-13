@@ -2,6 +2,8 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using MonoGamePlayFab.Interfaces;
+using MonoGamePlayFab.Models.Input;
+using MonoGamePlayFab.Scene;
 using MonoGamePlayFab.Services;
 using Newtonsoft.Json;
 using PlayFabMonoGame.Interfaces;
@@ -9,6 +11,7 @@ using PlayFabMonoGame.Models;
 using PlayFabMonoGame.Services;
 using System;
 using System.Configuration;
+using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Security.Cryptography;
@@ -24,6 +27,13 @@ namespace MonoGamePlayFab
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
 
+        protected ICoroutineService coroutineService;
+        protected IInputStateHandler inputHandlerService;
+        protected IKeyboardStateManager kbManager;
+        protected IMouseStateManager msManager;
+        protected IAudioManager audioManager;
+        protected ISceneManager sceneManager;
+
         public string PlayFabTitleId
         {
             get
@@ -32,9 +42,6 @@ namespace MonoGamePlayFab
             }
         }
 
-        public object CryptographicBuffer { get; private set; }
-        byte[] _key { get { return Encoding.UTF8.GetBytes(ConfigurationManager.AppSettings["key"]); } }
-        byte[] _iv { get { return Encoding.UTF8.GetBytes(ConfigurationManager.AppSettings["iv"]); } }
 
 
         IEncryptionService encryptionService;
@@ -47,7 +54,7 @@ namespace MonoGamePlayFab
             Content.RootDirectory = "Content";
             IsMouseVisible = true;
 
-            encryptionService = new EncryptionService(this, _key, _iv);
+            encryptionService = new EncryptionService(this, Encoding.UTF8.GetBytes(ConfigurationManager.AppSettings["key"]), Encoding.UTF8.GetBytes(ConfigurationManager.AppSettings["iv"]));
             playFabService = new PlayFabService(this, PlayFabTitleId);
         }
 
@@ -55,7 +62,18 @@ namespace MonoGamePlayFab
 
         protected override void Initialize()
         {
-            // TODO: Add your initialization logic here
+            CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("en");
+
+            coroutineService = new CoroutineService(this);
+            audioManager = new AudioManagerService(this);
+            kbManager = new KeyboardStateManager(this);
+            msManager = new MouseStateManager(this);
+            inputHandlerService = new InputHandlerService(this, kbManager, msManager);
+
+            sceneManager = new SceneManagerService(this);
+
+            sceneManager.AddScene(new SplashScene(this, "splashScene"));
+            sceneManager.AddScene(new MainMenuScene(this, "mainMenuScene"));
 
             base.Initialize();
         }
@@ -64,20 +82,22 @@ namespace MonoGamePlayFab
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
 
-            // TODO: use this.Content to load your game content here
+            sceneManager.LoadScene("splashScene");
+           
         }
 
         protected override void Update(GameTime gameTime)
         {
-            if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
-                Exit();
+            //if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
+            //    Exit();
 
-            // TODO: Add your update logic here
-            if (F1Down && Keyboard.GetState().IsKeyUp(Keys.F1))
-                Register("TestDude1", "tentsareAc3!").ConfigureAwait(false);
+            //// TODO: Add your update logic here
+            //if (F1Down && Keyboard.GetState().IsKeyUp(Keys.F1))
+            //    Register("TestDude1", "tentsareAc3!").ConfigureAwait(false);
 
-            F1Down = Keyboard.GetState().IsKeyDown(Keys.F1);
+            //F1Down = Keyboard.GetState().IsKeyDown(Keys.F1);
 
+            inputHandlerService.PreUpdate(gameTime);
             base.Update(gameTime);
         }
 
@@ -85,13 +105,15 @@ namespace MonoGamePlayFab
 
         protected override void Draw(GameTime gameTime)
         {
-            GraphicsDevice.Clear(Color.CornflowerBlue);
-
-            // TODO: Add your drawing code here
-
-            
-
+            GraphicsDevice.Clear(Color.Black);
             base.Draw(gameTime);
+        }
+
+        protected override void EndDraw()
+        {
+            base.EndDraw();
+
+            coroutineService.UpdateEndFrame(null);
         }
 
         protected async Task Register(string userName, string pwd)
