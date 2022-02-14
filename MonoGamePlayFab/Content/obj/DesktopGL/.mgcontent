@@ -5,10 +5,12 @@
   <Config />
   <SourceFiles>
     <File>C:/Users/Charles Humphrey/source/repos/NemoKradXNA/PlayFabPlayground/MonoGamePlayFab/Content/Fonts/versionFont.spritefont</File>
+    <File>C:/Users/Charles Humphrey/source/repos/NemoKradXNA/PlayFabPlayground/MonoGamePlayFab/Content/Textures/BG1.png</File>
     <File>C:/Users/Charles Humphrey/source/repos/NemoKradXNA/PlayFabPlayground/MonoGamePlayFab/Content/Textures/monoGameLog.png</File>
     <File>C:/Users/Charles Humphrey/source/repos/NemoKradXNA/PlayFabPlayground/MonoGamePlayFab/Content/Textures/playfablogo.png</File>
   </SourceFiles>
   <DestFiles>
+    <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
     <File xsi:nil="true" />
