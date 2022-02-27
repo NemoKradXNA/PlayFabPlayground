@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31424.327
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonoGamePlayFab", "MonoGamePlayFab.csproj", "{275669AF-019F-4879-9657-B3520250D78A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlayFabMonoGame", "..\PlayFabMonoGame\PlayFabMonoGame.csproj", "{017C7F96-DE7E-4801-89B2-AA15E7078E7B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{275669AF-019F-4879-9657-B3520250D78A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{275669AF-019F-4879-9657-B3520250D78A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{275669AF-019F-4879-9657-B3520250D78A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{275669AF-019F-4879-9657-B3520250D78A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{017C7F96-DE7E-4801-89B2-AA15E7078E7B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{017C7F96-DE7E-4801-89B2-AA15E7078E7B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{017C7F96-DE7E-4801-89B2-AA15E7078E7B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{017C7F96-DE7E-4801-89B2-AA15E7078E7B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FD0D7E8E-24EF-4234-8894-D334FF10C334}
+	EndGlobalSection
+EndGlobal

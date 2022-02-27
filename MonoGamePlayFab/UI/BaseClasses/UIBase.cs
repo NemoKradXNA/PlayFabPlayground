@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using MonoGame.Randomchaos.Services.Interfaces;
 using MonoGamePlayFab.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -9,8 +10,8 @@ namespace MonoGamePlayFab.UI.BaseClasses
 {
     public abstract class UIBase : DrawableGameComponent, IUIBase
     {
-        protected IAudioManager audioManager { get { return Game.Services.GetService<IAudioManager>(); } }
-        protected IInputStateHandler inputManager { get { return Game.Services.GetService<IInputStateHandler>(); } }
+        protected IAudioService audioManager { get { return Game.Services.GetService<IAudioService>(); } }
+        protected IInputStateService inputManager { get { return Game.Services.GetService<IInputStateService>(); } }
 
         public Point Position { get; set; }
         public Point Size { get; set; }

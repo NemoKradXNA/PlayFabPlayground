@@ -1,12 +1,9 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using MonoGamePlayFab.Enums;
-using MonoGamePlayFab.Models.Coroutine;
+using MonoGame.Randomchaos.Services.Coroutine.Models;
 using MonoGamePlayFab.Scene.BaseClasses;
 using System;
 using System.Collections;
-using System.Collections.Generic;
-using System.Text;
 
 namespace MonoGamePlayFab.Scene
 {

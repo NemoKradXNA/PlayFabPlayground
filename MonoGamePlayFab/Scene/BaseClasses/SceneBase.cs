@@ -1,20 +1,22 @@
 ﻿using Microsoft.Xna.Framework;
-using MonoGamePlayFab.Enums;
-using MonoGamePlayFab.Interfaces;
-using System;
+using MonoGame.Randomchaos.Services.Audio;
+using MonoGame.Randomchaos.Services.Coroutine;
+using MonoGame.Randomchaos.Services.Input;
+using MonoGame.Randomchaos.Services.Interfaces;
+using MonoGame.Randomchaos.Services.Interfaces.Enums;
+using MonoGamePlayFab.Services;
 using System.Collections.Generic;
-using System.Text;
 
 namespace MonoGamePlayFab.Scene.BaseClasses
 {
     public abstract class SceneBase : DrawableGameComponent, IScene
     {
-        public ISceneManager sceneManager { get { return Game.Services.GetService<ISceneManager>(); } }
-        protected ICoroutineService coroutineService { get { return Game.Services.GetService<ICoroutineService>(); } }
-        protected IKeyboardStateManager kbManager { get { return Game.Services.GetService<IInputStateHandler>().KeyboardManager; } }
-        protected IMouseStateManager msManager { get { return Game.Services.GetService<IInputStateHandler>().MouseManager; } }
+        public ISceneService sceneManager { get { return Game.Services.GetService<SceneManagerService>(); } }
+        protected ICoroutineService coroutineService { get { return Game.Services.GetService<CoroutineService>(); } }
+        protected IKeyboardStateManager kbManager { get { return Game.Services.GetService<InputHandlerService>().KeyboardManager; } }
+        protected IMouseStateManager msManager { get { return Game.Services.GetService<InputHandlerService>().MouseManager; } }
 
-        protected IAudioManager audioManager { get { return Game.Services.GetService<IAudioManager>(); } }
+        protected IAudioService audioManager { get { return Game.Services.GetService<AudioService>(); } }
 
         public string Name { get; set; }
         public IScene LastScene { get; set; }

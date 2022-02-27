@@ -1,17 +1,16 @@
 ﻿using Microsoft.Xna.Framework;
-using MonoGamePlayFab.Enums;
-using MonoGamePlayFab.Interfaces;
-using MonoGamePlayFab.Models.Coroutine;
-using System;
+using MonoGame.Randomchaos.Services.Coroutine;
+using MonoGame.Randomchaos.Services.Coroutine.Models;
+using MonoGame.Randomchaos.Services.Interfaces;
+using MonoGame.Randomchaos.Services.Interfaces.Enums;
 using System.Collections;
 using System.Collections.Generic;
-using System.Text;
 
 namespace MonoGamePlayFab.Services
 {
-    public class SceneManagerService : ISceneManager
+    public class SceneManagerService : ISceneService
     {
-        ICoroutineService coroutineService { get { return Game.Services.GetService<ICoroutineService>(); } }
+        ICoroutineService coroutineService { get { return Game.Services.GetService<CoroutineService>(); } }
 
         public IScene CurrentScene { get; set; }
         public SceneStateEnum CurrentSceneState
@@ -35,7 +34,7 @@ namespace MonoGamePlayFab.Services
             Game = game;
             Scenes = new Dictionary<string, IScene>();
 
-            Game.Services.AddService(typeof(ISceneManager), this);
+            Game.Services.AddService(typeof(ISceneService), this);
         }
 
         public void AddScene(IScene scene)

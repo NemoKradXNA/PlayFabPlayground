@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using MonoGamePlayFab.Models.Coroutine;
+using MonoGame.Randomchaos.Services.Coroutine.Models;
+using MonoGame.Randomchaos.Services.Interfaces.Enums;
 using MonoGamePlayFab.Scene.BaseClasses;
 using System;
 using System.Collections;
@@ -41,7 +42,7 @@ namespace MonoGamePlayFab.Scene
 
         IEnumerator AnimateBG()
         {
-            while (State != Enums.SceneStateEnum.Unloaded)
+            while (State != SceneStateEnum.Unloaded)
             {
                 yield return new WaitForSeconds(Game,.125f);
 

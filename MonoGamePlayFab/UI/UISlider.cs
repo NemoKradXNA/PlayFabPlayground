@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using MonoGame.Randomchaos.Services.Interfaces;
 using MonoGamePlayFab.UI.BaseClasses;
 using System;
 using System.Collections.Generic;
@@ -49,7 +50,7 @@ namespace MonoGamePlayFab.UI
         }
 
         bool dragging;
-        private void btnOnMouseDown(Interfaces.IUIBase sender, Interfaces.IMouseStateManager mouseState)
+        private void btnOnMouseDown(IUIBase sender, IMouseStateManager mouseState)
         {
             dragging = true;
         }

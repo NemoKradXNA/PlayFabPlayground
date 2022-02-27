@@ -1,8 +1,12 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
+using MonoGame.Randomchaos.Services.Audio;
+using MonoGame.Randomchaos.Services.Coroutine;
+using MonoGame.Randomchaos.Services.Encryption;
+using MonoGame.Randomchaos.Services.Input;
+using MonoGame.Randomchaos.Services.Input.Models;
+using MonoGame.Randomchaos.Services.Interfaces;
 using MonoGamePlayFab.Interfaces;
-using MonoGamePlayFab.Models.Input;
 using MonoGamePlayFab.Scene;
 using MonoGamePlayFab.Services;
 using Newtonsoft.Json;
@@ -13,8 +17,6 @@ using System;
 using System.Configuration;
 using System.Globalization;
 using System.IO;
-using System.Linq;
-using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -28,11 +30,11 @@ namespace MonoGamePlayFab
         private SpriteBatch _spriteBatch;
 
         protected ICoroutineService coroutineService;
-        protected IInputStateHandler inputHandlerService;
+        protected IInputStateService inputHandlerService;
         protected IKeyboardStateManager kbManager;
         protected IMouseStateManager msManager;
-        protected IAudioManager audioManager;
-        protected ISceneManager sceneManager;
+        protected IAudioService audioManager;
+        protected ISceneService sceneManager;
 
         public string PlayFabTitleId
         {
@@ -65,7 +67,7 @@ namespace MonoGamePlayFab
             CultureInfo.DefaultThreadCurrentCulture = new CultureInfo("en");
 
             coroutineService = new CoroutineService(this);
-            audioManager = new AudioManagerService(this);
+            audioManager = new AudioService(this);
             kbManager = new KeyboardStateManager(this);
             msManager = new MouseStateManager(this);
             inputHandlerService = new InputHandlerService(this, kbManager, msManager);
